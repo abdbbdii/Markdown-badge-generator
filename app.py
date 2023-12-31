@@ -59,7 +59,7 @@ with st.container(border=True):
     if logoInc:
         icon = icons.get(link.get("logo"))
         color = st.color_picker("Badge Color", value="#"+icon.__dict__["hex"])[1:]
-        logoColor = st.color_picker("Choose logo color", value="#ffffff")[1:]
+        logoColor = st.color_picker("Logo Color", value="#ffffff")[1:]
         if st.button("Same as text"):
             logoColor = link.get("color")
         if st.button("Logo color"):
@@ -68,9 +68,11 @@ with st.container(border=True):
         link.config('logoColor', logoColor)
     else:
         color = st.color_picker("Badge Color", value="#ffffff")[1:]
-        logoColor = st.color_picker("Choose logo color", disabled=True)
+        logoColor = st.color_picker("Logo Color", disabled=True)
         st.button("Same as text", disabled=True)
         st.button("Logo color", disabled=True)
+    link.config('color', color)
+    
     
     link.config("style", st.selectbox("Style", ("flat", "flat-square", "plastic", "for-the-badge", "social")))
     md=f"![{link.get('label')}]({link})"
