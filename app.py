@@ -31,8 +31,12 @@ class Link:
             link_parts.append("?")
             link_parts.extend([f"{key}={value}&" for key, value in self.parameters.items() if value is not None])
         return "".join(link_parts).rstrip("&")
+st.markdown('''# Badge Generator
+This web app creates personalized badges for your upcoming project by generating HTML and Markdown code. It utilizes the shields.io API for crafting these badges.
+To know how the API works, go to [Github](https://github.com/abdbbdii/markdown-badge-generator).
+To know how exactly it generates them, go to [shields.io](https://img.shields.io/badge/).''')
 with st.container(border=True):
-    st.title("Badge Generator")
+    st.markdown("### Add elements")
     label = st.text_input("Label", placeholder="Label", value="Label")
     if not label:
         st.error("Label cannot be empty.")
@@ -43,6 +47,8 @@ with st.container(border=True):
 
     link.config("style", st.selectbox("Style", ("flat", "flat-square", "plastic", "for-the-badge", "social")))
 
+with st.container(border=True):
+    st.markdown("### Customize badge")
     if st.checkbox("Include a logo?"):
         logo = st.selectbox("Logo", icons)
         link.config('logo', logo)
