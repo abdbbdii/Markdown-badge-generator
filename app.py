@@ -31,8 +31,8 @@ class Link:
             link_parts.append("?")
             link_parts.extend([f"{key}={value}&" for key, value in self.parameters.items() if value is not None])
         return "".join(link_parts).rstrip("&")
-
-st.title("Badge Generator")
+with st.container():
+    st.title("Badge Generator")
 label = st.text_input("Label", placeholder="Label", value="Label")
 if not label:
     st.error("Label cannot be empty.")
