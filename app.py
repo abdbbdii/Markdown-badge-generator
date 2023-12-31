@@ -36,7 +36,7 @@ This web app creates personalized badges for your upcoming project by generating
             
 To know how exactly it generates them, go to [Github](https://github.com/abdbbdii/markdown-badge-generator).
             
-To know how the API works, go to [shields.io](https://img.shields.io/badge/).''')
+To know how the API works, go to [shields.io](https://shields.io/).''')
 with st.container(border=True):
     st.markdown("### Add elements")
     label = st.text_input("Label", placeholder="Label", value="Label")
@@ -70,3 +70,4 @@ with st.container(border=True):
     if (link.get("label")):
         st.markdown(md)
         st.code(md, "None")
+st.write("Made with ❤️ by abd")
