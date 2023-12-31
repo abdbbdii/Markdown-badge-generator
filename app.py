@@ -33,8 +33,8 @@ class Link:
         return "".join(link_parts).rstrip("&")
 st.markdown('''# Badge Generator
 This web app creates personalized badges for your upcoming project by generating HTML and Markdown code. It utilizes the shields.io API for crafting these badges.
-To know how the API works, go to [Github](https://github.com/abdbbdii/markdown-badge-generator).
-To know how exactly it generates them, go to [shields.io](https://img.shields.io/badge/).''')
+To know how exactly it generates them, go to [Github](https://github.com/abdbbdii/markdown-badge-generator).
+To know how the API works, go to [shields.io](https://img.shields.io/badge/).''')
 with st.container(border=True):
     st.markdown("### Add elements")
     label = st.text_input("Label", placeholder="Label", value="Label")
