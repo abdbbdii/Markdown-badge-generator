@@ -61,7 +61,7 @@ with st.container(border=True):
     columns2 = st.columns(5)
     if logoInc:
         icon = icons.get(link.get("logo"))
-        link.config("color",columns1[0].color_picker("Badge Color", value="#"+icon.__dict__["hex"])[1:])
+        link.config("color",columns1[0].color_picker("Badge Color", value="#"+icon.__dict__["hex"] if link.get("color") is None else "#"+link.get("color"))[1:])
         if columns1[4].button("Get logo color", key="btn1"):
             link.config("color", icon.__dict__["hex"])
         logoColor = columns2[0].color_picker("Logo Color", value="#ffffff")[1:]
