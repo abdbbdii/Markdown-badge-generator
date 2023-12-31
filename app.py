@@ -15,15 +15,6 @@ class Link:
         self.parameters[key] = value
     
     def get(self, string):
-        # value = self.parameters.get(string, None)
-        # if value is not None:
-        #     return value
-        # elif string == "label":
-        #     return self.label
-        # elif string == "message":
-        #     return self.message
-        # elif string == "color":
-        #     return self.color
         return self.parameters.get(string, getattr(self, string, None))
 
     def __str__(self):
@@ -65,7 +56,7 @@ with st.container(border=True):
         link.config("color",columns1[0].color_picker("Badge Color", value="#"+icon.__dict__["hex"] if link.get("color") is None else "#"+link.get("color"))[1:])
         if columns1[4].button("Get logo color", key="btn1"):
             link.config("color", icon.__dict__["hex"])
-        logoColor = columns2[0].color_picker("Logo Color", value="#ffffff")[1:]
+        logoColor = columns2[0].color_picker("Logo Color", value="#"+icon.__dict__["hex"])[1:]
         link.config('logoColor', logoColor)
         if columns2[4].button("Get logo color", key="btn2"):
             link.config('logoColor', icon.__dict__["hex"])
