@@ -15,15 +15,16 @@ class Link:
         self.parameters[key] = value
     
     def get(self, string):
-        value = self.parameters.get(string, None)
-        if value is not None:
-            return value
-        elif string == "label":
-            return self.label
-        elif string == "message":
-            return self.message
-        elif string == "color":
-            return self.color
+        # value = self.parameters.get(string, None)
+        # if value is not None:
+        #     return value
+        # elif string == "label":
+        #     return self.label
+        # elif string == "message":
+        #     return self.message
+        # elif string == "color":
+        #     return self.color
+        return self.parameters.get(string, getattr(self, string, None))
 
     def __str__(self):
         link_parts = [self.BASE_URL, f"{self.label}-{self.message}-{self.color}" if self.message else f"{self.label}-{self.color}"]
