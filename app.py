@@ -57,24 +57,24 @@ with st.container(border=True):
 with st.container(border=True):
     st.markdown("### Customize badge")
     link.config("style", st.selectbox("Style", ("flat", "flat-square", "plastic", "for-the-badge", "social")))
-    columns1 = st.columns(2)
-    columns2 = st.columns(2)
+    columns1 = st.columns(10)
+    columns2 = st.columns(10)
     if logoInc:
         icon = icons.get(link.get("logo"))
         color = columns1[0].color_picker("Badge Color", value="#"+icon.__dict__["hex"])[1:]
-        if columns1[1].button("Get logo color", key="btn1"):
+        if columns1[9].button("Get logo color", key="btn1"):
             color = icon.__dict__["hex"]
 
         logoColor = columns2[0].color_picker("Logo Color", value="#ffffff")[1:]
-        if columns2[1].button("Get logo color", key="btn2"):
+        if columns2[9].button("Get logo color", key="btn2"):
             logoColor = icon.__dict__["hex"]
 
         link.config('logoColor', logoColor)
     else:
         color = columns1[0].color_picker("Badge Color", value="#ffffff")[1:]
-        columns1[1].button("Get logo color", disabled=True, key="btn1")
+        columns1[9].button("Get logo color", disabled=True, key="btn1")
         columns2[0].color_picker("Logo Color", value="#ffffff", disabled=True)
-        columns2[1].button("Get logo color", disabled=True, key="btn2")
+        columns2[9].button("Get logo color", disabled=True, key="btn2")
     
     link.config('color', color)
 
