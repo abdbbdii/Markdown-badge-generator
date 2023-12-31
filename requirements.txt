@@ -1,1 +1,1 @@
-simpleicons
+simpleicons==7.21.0
