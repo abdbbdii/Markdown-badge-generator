@@ -48,7 +48,7 @@ if st.checkbox("Include a logo?"):
     link.config('logo', logo)
     logoColor = st.color_picker("Choose logo color", value="#000000" if link.get("logoColor") is None else "#"+link.get("logoColor"))[1:]
     if st.button("Same as text"):
-        logoColor = {link.get("color")}
+        logoColor = link.get("color")
     if st.button("Logo color"):
         icon = icons.get(link.get("logo"))
         logoColor = icon.__dict__["hex"]
