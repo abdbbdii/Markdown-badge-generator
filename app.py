@@ -56,6 +56,7 @@ with st.container(border=True):
 
 with st.container(border=True):
     st.markdown("### Customize badge")
+    link.config("style", st.selectbox("Style", ("flat", "flat-square", "plastic", "for-the-badge", "social")))
     columns1 = st.columns(2)
     columns2 = st.columns(2)
     if logoInc:
@@ -76,10 +77,10 @@ with st.container(border=True):
         columns1[1].button("Get logo color", disabled=True)
         columns2[0].color_picker("Logo Color", value="#ffffff", disabled=True)[1:]
         columns2[1].button("Get logo color", disabled=True)
-
-    link.config('color', color)
     
-    link.config("style", st.selectbox("Style", ("flat", "flat-square", "plastic", "for-the-badge", "social")))
+    link.config('color', color)
+
+with st.container(border=True):
     md=f"![{link.get('label')}]({link})"
     if (link.get("label")):
         st.markdown(md)
