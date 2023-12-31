@@ -59,15 +59,13 @@ with st.container(border=True):
     link.config("style", st.selectbox("Style", ("flat", "flat-square", "plastic", "for-the-badge", "social")))
     columns1 = st.columns(2)
     columns2 = st.columns(2)
-    color="ffffff"
     if logoInc:
         icon = icons.get(link.get("logo"))
-
-        columns1[0].color_picker("Badge Color", value="#"+icon.__dict__["hex"])[1:]
+        color = columns1[0].color_picker("Badge Color", value="#"+icon.__dict__["hex"])[1:]
         if columns1[1].button("Get logo color", key="btn1"):
             color = icon.__dict__["hex"]
 
-        columns2[0].color_picker("Logo Color", value="#ffffff")[1:]
+        logoColor = columns2[0].color_picker("Logo Color", value="#ffffff")[1:]
         if columns2[1].button("Get logo color", key="btn2"):
             logoColor = icon.__dict__["hex"]
 
