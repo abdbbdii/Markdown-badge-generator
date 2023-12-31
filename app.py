@@ -34,9 +34,9 @@ class Link:
 st.markdown('''# Badge Generator
 This web app creates personalized badges for your upcoming project by generating HTML and Markdown code. It utilizes the shields.io API for crafting these badges.
             
-To know how exactly it generates them, go to [Github](https://github.com/abdbbdii/markdown-badge-generator).
+To know how exactly it generates them, go to [github.com/abdbbdii/markdown-badge-generator](https://github.com/abdbbdii/markdown-badge-generator).
             
-To know how the API works, go to [shields.io](https://shields.io/).''')
+To know how the API works, go to [shields.io/badges](https://shields.io/badges).''')
 with st.container(border=True):
     st.markdown("### Add elements")
 
@@ -56,20 +56,29 @@ with st.container(border=True):
 
 with st.container(border=True):
     st.markdown("### Customize badge")
+    columns1 = st.columns(2)
+    columns2 = st.columns(2)
     if logoInc:
         icon = icons.get(link.get("logo"))
         color = st.color_picker("Badge Color", value="#"+icon.__dict__["hex"])[1:]
-        logoColor = st.color_picker("Logo Color", value="#ffffff")[1:]
-        if st.button("Logo color"):
-            icon = icons.get(link.get("logo"))
+
+        columns1[0].color_picker("Color", value="#ffffff")[1:]
+        if columns1[1].button("Get logo color"):
+            color = icon.__dict__["hex"]
+
+        columns2[0].color_picker("Logo Color", value="#ffffff")[1:]
+        if columns2[1].button("Get logo color"):
             logoColor = icon.__dict__["hex"]
+
         link.config('logoColor', logoColor)
     else:
         color = st.color_picker("Badge Color", value="#ffffff")[1:]
-        logoColor = st.color_picker("Logo Color", disabled=True)
-        st.button("Logo color", disabled=True)
+        columns1[0].color_picker("Color", value="#ffffff")[1:]
+        columns1[1].button("Get logo color", disabled=True)
+        columns2[0].color_picker("Logo Color", value="#ffffff", disabled=True)[1:]
+        columns2[1].button("Get logo color", disabled=True)
+
     link.config('color', color)
-    
     
     link.config("style", st.selectbox("Style", ("flat", "flat-square", "plastic", "for-the-badge", "social")))
     md=f"![{link.get('label')}]({link})"
