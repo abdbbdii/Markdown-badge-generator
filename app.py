@@ -6,8 +6,8 @@ class Link:
     BASE_URL = "https://img.shields.io/badge/"
 
     def __init__(self, label, color, message=None) -> None:
-        self.label = label.strip().replace(" ", "_").replace('-','--')
-        self.message = message.strip().replace(" ", "_").replace('-','--')
+        self.label = label.strip().replace("_","__").replace(" ", "%20").replace('-','--')
+        self.message = message.strip().replace("_","__").replace(" ", "%20").replace('-','--')
         self.color = color
         self.parameters = {}
 
@@ -79,7 +79,7 @@ with st.container(border=True):
     link.config('color', color)
 
 with st.container(border=True):
-    md=f"![{link.get('label')}]({link})"
+    md=f"![{link.get('label').replace("__","_").replace("%20", " ").replace('--','-')}]({link})"
     if (link.get("label")):
         st.markdown(md)
         st.code(md, "None")
