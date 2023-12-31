@@ -74,9 +74,9 @@ with st.container(border=True):
         link.config('logoColor', logoColor)
     else:
         color = columns1[0].color_picker("Badge Color", value="#ffffff")[1:]
-        columns1[1].button("Get logo color", disabled=True)
+        columns1[1].button("Get logo color", disabled=True, key="btn1")
         columns2[0].color_picker("Logo Color", value="#ffffff", disabled=True)
-        columns2[1].button("Get logo color", disabled=True)
+        columns2[1].button("Get logo color", disabled=True, key="btn2")
     
     link.config('color', color)
 
