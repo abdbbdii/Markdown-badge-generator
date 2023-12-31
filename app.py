@@ -32,8 +32,10 @@ class Link:
             link_parts.extend([f"{key}={value}&" for key, value in self.parameters.items() if value is not None])
         return "".join(link_parts).rstrip("&")
 st.markdown('''# Badge Generator
-This web app creates personalized badges for your upcoming project by generating HTML and Markdown code. It utilizes the shields.io API for crafting these badges.<br>
-To know how exactly it generates them, go to [Github](https://github.com/abdbbdii/markdown-badge-generator).<br>
+This web app creates personalized badges for your upcoming project by generating HTML and Markdown code. It utilizes the shields.io API for crafting these badges.
+            
+To know how exactly it generates them, go to [Github](https://github.com/abdbbdii/markdown-badge-generator).
+            
 To know how the API works, go to [shields.io](https://img.shields.io/badge/).''')
 with st.container(border=True):
     st.markdown("### Add elements")
