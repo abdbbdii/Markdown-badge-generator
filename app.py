@@ -39,22 +39,27 @@ To know how exactly it generates them, go to [Github](https://github.com/abdbbdi
 To know how the API works, go to [shields.io](https://shields.io/).''')
 with st.container(border=True):
     st.markdown("### Add elements")
+
     label = st.text_input("Label", placeholder="Label", value="Label")
     if not label:
         st.error("Label cannot be empty.")
     message = st.text_input("Message", placeholder="Message")
-    color = st.color_picker("Choose text background color", value="#ffffff")[1:]
-        
-    link = Link(label=label,message=message, color=color)
+    link = Link(label=label,message=message, color="ffffff")
 
-    link.config("style", st.selectbox("Style", ("flat", "flat-square", "plastic", "for-the-badge", "social")))
+    logoInc=st.checkbox("Include a logo?")
+    if logoInc:
+        logo = st.selectbox("Logo", icons)
+        link.config('logo', logo)
+    else:
+        logo = st.selectbox("Logo", icons, disabled=True)
+
 
 with st.container(border=True):
     st.markdown("### Customize badge")
-    if st.checkbox("Include a logo?"):
-        logo = st.selectbox("Logo", icons)
-        link.config('logo', logo)
-        logoColor = st.color_picker("Choose logo color", value="#000000" if link.get("logoColor") is None else "#"+link.get("logoColor"))[1:]
+    if logoInc:
+        icon = icons.get(link.get("logo"))
+        color = st.color_picker("Badge Color", value="#"+icon.__dict__["hex"])[1:]
+        logoColor = st.color_picker("Choose logo color", value="#ffffff")[1:]
         if st.button("Same as text"):
             logoColor = link.get("color")
         if st.button("Logo color"):
@@ -62,12 +67,16 @@ with st.container(border=True):
             logoColor = icon.__dict__["hex"]
         link.config('logoColor', logoColor)
     else:
-        logo = st.text_input("Logo", disabled=True)
+        color = st.color_picker("Badge Color", value="#ffffff")[1:]
         logoColor = st.color_picker("Choose logo color", disabled=True)
         st.button("Same as text", disabled=True)
         st.button("Logo color", disabled=True)
+    
+    link.config("style", st.selectbox("Style", ("flat", "flat-square", "plastic", "for-the-badge", "social")))
     md=f"![{link.get('label')}]({link})"
     if (link.get("label")):
         st.markdown(md)
         st.code(md, "None")
+
+
 st.write("Made with ❤️ by abd")
