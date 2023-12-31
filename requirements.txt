@@ -1,1 +1,1 @@
-simpleicons==7.21.0
+git+https://github.com/simple-icons/simple-icons.git
