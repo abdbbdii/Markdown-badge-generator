@@ -60,8 +60,6 @@ with st.container(border=True):
         icon = icons.get(link.get("logo"))
         color = st.color_picker("Badge Color", value="#"+icon.__dict__["hex"])[1:]
         logoColor = st.color_picker("Logo Color", value="#ffffff")[1:]
-        if st.button("Same as text"):
-            logoColor = link.get("color")
         if st.button("Logo color"):
             icon = icons.get(link.get("logo"))
             logoColor = icon.__dict__["hex"]
@@ -69,7 +67,6 @@ with st.container(border=True):
     else:
         color = st.color_picker("Badge Color", value="#ffffff")[1:]
         logoColor = st.color_picker("Logo Color", disabled=True)
-        st.button("Same as text", disabled=True)
         st.button("Logo color", disabled=True)
     link.config('color', color)
     
