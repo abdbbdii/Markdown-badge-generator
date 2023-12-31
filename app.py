@@ -61,22 +61,19 @@ with st.container(border=True):
     columns2 = st.columns(5)
     if logoInc:
         icon = icons.get(link.get("logo"))
-        color = columns1[0].color_picker("Badge Color", value="#"+icon.__dict__["hex"])[1:]
+        link.config("color",columns1[0].color_picker("Badge Color", value="#"+icon.__dict__["hex"])[1:])
         if columns1[4].button("Get logo color", key="btn1"):
-            color = icon.__dict__["hex"]
-
+            link.config("color", icon.__dict__["hex"])
         logoColor = columns2[0].color_picker("Logo Color", value="#ffffff")[1:]
-        if columns2[4].button("Get logo color", key="btn2"):
-            logoColor = icon.__dict__["hex"]
-
         link.config('logoColor', logoColor)
+        if columns2[4].button("Get logo color", key="btn2"):
+            link.config('logoColor', icon.__dict__["hex"])
     else:
-        color = columns1[0].color_picker("Badge Color", value="#ffffff")[1:]
+        link.config('color', columns1[0].color_picker("Badge Color", value="#ffffff")[1:])
         columns1[4].button("Get logo color", disabled=True, key="btn1")
         columns2[0].color_picker("Logo Color", value="#ffffff", disabled=True)
         columns2[4].button("Get logo color", disabled=True, key="btn2")
     
-    link.config('color', color)
 
 with st.container(border=True):
     text = ((link.get('label').replace("__","_")).replace("%20", " ")).replace('--', '-')
