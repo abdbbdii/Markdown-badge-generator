@@ -32,10 +32,11 @@ To know how the API works, go to [shields.io/badges](https://shields.io/badges).
 with st.container(border=True):
     st.markdown("### Add elements")
 
-    label = st.text_input("Label", placeholder="Label", value="Label")
+    columnsl = st.columns(2)
+    label = columnsl[0].text_input("Label", placeholder="Label", value="Label")
     if not label:
         st.error("Label cannot be empty.")
-    message = st.text_input("Message", placeholder="Message")
+    message = columnsl[1].text_input("Message", placeholder="Message")
     link = Link(label=label,message=message, color="ffffff")
 
     logoInc=st.checkbox("Include a logo?")
