@@ -1,5 +1,7 @@
 # Markdown Badge Generator
 
+![alt text](screenshot.png)
+
 This web app creates personalized badges for your upcoming project by generating HTML and Markdown code. It utilizes the shields.io API for crafting these badges.
 
 To use it, go to [markdown-badge-generator.streamlit.app](https://markdown-badge-generator.streamlit.app/).
