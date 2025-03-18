@@ -39,7 +39,7 @@ st.header("Badge Generator", divider="red")
 st.markdown(
     """This web app creates personalized badges for your upcoming project by generating HTML and Markdown code. It utilizes the shields.io API for crafting these badges.
             
-To know how exactly it generates them, go to [github.com/abdbbdii/markdown-badge-generator](https://github.com/abdbbdii/markdown-badge-generator).
+To know how exactly it generates them, go to [github.com/abdxdev/markdown-badge-generator](https://github.com/abdxdev/markdown-badge-generator).
             
 To know how the API works, go to [shields.io/badges](https://shields.io/badges)."""
 )
